@@ -71,7 +71,7 @@ This project analyzes YouTube video performance data to discover what drives rev
 > You can save your plots using `plt.savefig("images/revenue_distribution.png")` and then display them like this:
 
 ```
-![Revenue Distribution](images/revenue_distribution.png)
+![Revenue Distribution](images/revenue_vs_views.png)
 ```
 
 ---
