@@ -63,8 +63,8 @@ This project analyzes YouTube video performance data to discover what drives rev
 - 🕒 Upload time and duration slightly correlate with performance  
 - 🔁 Returning viewers and higher CTRs indicate loyal audiences and better monetization  
 
----
 
+<!--
 ## 📊 Visualizations
 
 > 📍 *Insert visual plots here for aesthetic flair (optional)*  
@@ -73,6 +73,7 @@ This project analyzes YouTube video performance data to discover what drives rev
 ```
 ![Revenue Distribution](images/revenue_vs_views.png)
 ```
+-->
 
 ---
 
