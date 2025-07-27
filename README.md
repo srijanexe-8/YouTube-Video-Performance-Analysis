@@ -6,14 +6,6 @@
 
 📺 *Unlocking secrets behind what makes a YouTube video successful using real data and machine learning.*
 
-[![GitHub Stars](https://img.shields.io/github/stars/YOUR_USERNAME/YOUR_REPO?style=social)](https://github.com/YOUR_USERNAME/YOUR_REPO)
-[![Forks](https://img.shields.io/github/forks/YOUR_USERNAME/YOUR_REPO?style=social)](https://github.com/YOUR_USERNAME/YOUR_REPO/fork)
-[![Last Commit](https://img.shields.io/github/last-commit/YOUR_USERNAME/YOUR_REPO)](https://github.com/YOUR_USERNAME/YOUR_REPO)
-
-</div>
-
----
-
 ## 🔍 Overview
 
 This project analyzes YouTube video performance data to discover what drives revenue, engagement, and audience retention. Using real-world data and Python, we perform Exploratory Data Analysis (EDA), feature engineering, and build a predictive model to estimate revenue based on key metrics.
@@ -121,41 +113,57 @@ y_pred = model.predict(X_test)
 4. **Run the notebook**: `youtube_video_performance_analysis.ipynb`
 
 ---
+## 🚀 Model Enhancements & Advanced Evaluation
 
-## 📁 Project Structure
+After building a basic Random Forest model, we improved performance through several advanced techniques:
 
+### 🧠 Feature Engineering
+- Added normalized engagement metrics like:
+  - `Likes per View`
+  - `Shares per View`
+  - `New Comments per View`
+- Extracted **publish hour** and **day of week** from timestamps
+- Created an `Engagement Level` feature using quartile bins
+
+### 🎯 Hyperparameter Tuning (Grid Search)
+- Tuned `n_estimators`, `max_depth`, `min_samples_split`, and `min_samples_leaf`
+- Used `GridSearchCV` with 5-fold cross-validation to find optimal values
+
+### ⚔️ Model Comparison
+We trained and compared multiple models:
+- **Random Forest Regressor (Tuned)**
+- **Gradient Boosting Regressor**
+- **XGBoost Regressor**
+
+#### 📊 Comparison Results (Sample)
+
+| Model                    | R² Score | MSE    |
+|--------------------------|----------|--------|
+| Random Forest (Tuned)    | ~0.91    | ~0.41  |
+| Gradient Boosting        | ~0.89    | ~0.44  |
+| XGBoost                  | ~0.90    | ~0.42  |
+
+### 🔁 Cross-Validation
+Used 5-fold cross-validation to ensure the model generalizes well and isn't overfitting:
+```python
+from sklearn.model_selection import cross_val_score
+cross_val_score(model, X, y, cv=5, scoring='r2')
 ```
-youtube-video-performance-analysis/
-├── data/
-│   └── youtube_channel_data.csv
-├── notebooks/
-│   └── youtube_video_performance_analysis.ipynb
-├── images/
-│   └── (plots go here)
-├── README.md
-├── requirements.txt
-└── .gitignore
+
+### 💾 Final Model Export
+Saved the best-performing model using `joblib`:
+```python
+joblib.dump(model, "best_youtube_revenue_model.pkl")
 ```
 
 ---
 
-## 📜 License
-
-This project is under the [MIT License](LICENSE)
-
----
-
-## ✨ Credits
-
-- Project idea & dataset from **DA/ML Capstone Assignment**
-- Developed by **Srijan Sharma** 🤴  
-- Inspired by real-world YouTube content analytics
+> 📌 These enhancements significantly improved the model’s accuracy, robustness, and interpretability — turning the basic regressor into a more production-ready pipeline.
 
 ---
 
 <div align="center">
 
 Made with 💻 + 📊 + ☕ by **Srijan**  
-*Long live the reign of data.* 👑
 
 </div>
